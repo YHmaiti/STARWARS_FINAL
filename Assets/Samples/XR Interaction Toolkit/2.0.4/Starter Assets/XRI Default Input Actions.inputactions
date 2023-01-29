@@ -1093,6 +1093,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "RightHand Velocity",
+            "id": "001ac4f1-33dd-44aa-8f10-df43fac99b2c",
+            "actions": [
+                {
+                    "name": "RightHand Controller",
+                    "type": "Value",
+                    "id": "d8d3dfaa-610c-4b8e-9f64-df9e1447fc66",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a45a1245-9786-444e-a169-e1d808e5a43f",
+                    "path": "<OculusTouchController>{RightHand}/devicePose/velocity",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightHand Controller",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
