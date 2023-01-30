@@ -1,11 +1,11 @@
 Model Information:
-* title:	Ancient Lightsaber Hilt
-* source:	https://sketchfab.com/3d-models/ancient-lightsaber-hilt-6051374bccb542f7902137ab0fdfc875
-* author:	JeanStroh (https://sketchfab.com/JeanStroh)
+* title:	Clone Trooper Phase2 (332nd)
+* source:	https://sketchfab.com/3d-models/clone-trooper-phase2-332nd-49e56ac8273341c4a359cb4f8b0afa15
+* author:	Admiral Tributon (https://sketchfab.com/doctor10)
 
 Model License:
 * license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
 * requirements:	Author must be credited. Commercial use is allowed.
 
 If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
-This work is based on "Ancient Lightsaber Hilt" (https://sketchfab.com/3d-models/ancient-lightsaber-hilt-6051374bccb542f7902137ab0fdfc875) by JeanStroh (https://sketchfab.com/JeanStroh) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+This work is based on "Clone Trooper Phase2 (332nd)" (https://sketchfab.com/3d-models/clone-trooper-phase2-332nd-49e56ac8273341c4a359cb4f8b0afa15) by Admiral Tributon (https://sketchfab.com/doctor10) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
