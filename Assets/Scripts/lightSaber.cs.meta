@@ -3,7 +3,14 @@ guid: 7d4d8848e65b5bd43ab59d75116a2539
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - AButton: {fileID: -3384733155523483639, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  - rightVelocity: {fileID: 1102539217247810338, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  - saberMovingSound: {instanceID: 0}
+  - saberTurnOnSound: {instanceID: 0}
+  - saberTurnOffSound: {instanceID: 0}
+  - saberFightSound: {instanceID: 0}
+  - saberNormalSound: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
