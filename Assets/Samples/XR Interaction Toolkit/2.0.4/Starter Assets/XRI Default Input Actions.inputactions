@@ -278,6 +278,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "ActivateHighlighter",
+                    "type": "Button",
+                    "id": "8718d356-3824-4f68-b9d7-f74d735e5452",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -456,6 +465,17 @@
                     "action": "Translate Anchor",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "07be09a2-331c-43e6-a339-25cd7ce02f65",
+                    "path": "<XRController>{LeftHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "ActivateHighlighter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -798,13 +818,40 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "LightSaberActivation",
+                    "name": "Pickup",
                     "type": "Button",
-                    "id": "019835fc-1616-4562-b968-3e39747d64b1",
+                    "id": "6a64970b-f801-4efd-b6e2-730059c4b353",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "PerformGesture",
+                    "type": "Button",
+                    "id": "7c2ffa5b-9b17-415d-8d07-d8adc662cfb8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "debug_write_B",
+                    "type": "Button",
+                    "id": "c4bc4d02-f77f-4868-9cd1-c30b5b26a8cf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "GravityZonePull",
+                    "type": "Value",
+                    "id": "fd56db76-4087-4cb0-8852-03dd4abb02d2",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -986,12 +1033,45 @@
                 },
                 {
                     "name": "",
-                    "id": "777e3b27-aa1f-4b7a-8c95-0d9e78941b82",
-                    "path": "<OculusTouchController>{RightHand}/primaryButton",
+                    "id": "f104e91d-f7bc-43da-bf73-861c6fceb5be",
+                    "path": "<XRController>{RightHand}/primary",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "LightSaberActivation",
+                    "groups": "Generic XR Controller",
+                    "action": "Pickup",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f58a719c-3dcb-4637-b49c-fbb344849917",
+                    "path": "<XRController>{RightHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "PerformGesture",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "12d0cfbe-642b-4c74-bf9a-cfec2926f628",
+                    "path": "<XRController>{RightHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "debug_write_B",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8122b4de-f7b1-4f34-9f73-15e883f00a01",
+                    "path": "<XRController>{RightHand}/primary2DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "GravityZonePull",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -1089,34 +1169,6 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Turn",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "RightHand Velocity",
-            "id": "001ac4f1-33dd-44aa-8f10-df43fac99b2c",
-            "actions": [
-                {
-                    "name": "RightHand Controller",
-                    "type": "Value",
-                    "id": "d8d3dfaa-610c-4b8e-9f64-df9e1447fc66",
-                    "expectedControlType": "Vector3",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "a45a1245-9786-444e-a169-e1d808e5a43f",
-                    "path": "<OculusTouchController>{RightHand}/devicePose/velocity",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RightHand Controller",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

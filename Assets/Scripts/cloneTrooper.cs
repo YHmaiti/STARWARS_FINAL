@@ -7,7 +7,7 @@ public class cloneTrooper : MonoBehaviour
 {
     // Creat enemy and make them shoot at the player
     public GameObject enemy;
-    public navemeshagent agent;
+    public NavMeshAgent agent;
     // Start is called before the first frame update
     void Start()
     {
