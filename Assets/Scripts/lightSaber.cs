@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR;
+using Gestures;
 
 public class lightSaber : MonoBehaviour
 {
+    private Gestures.Recognizer recognizer;
+    private Gestures.PerformingGestureAction performingGestureAction;
     private GameObject Saber;
     bool saberOn = false;
     bool On=false;
@@ -49,6 +52,8 @@ public class lightSaber : MonoBehaviour
             Hum = true;
             //GetComponent<AudioSource>().Stop();
         }
+        performingGestureAction = GetComponent<Gestures.PerformingGestureAction>();
+
     }
     private void powerButton()
     {

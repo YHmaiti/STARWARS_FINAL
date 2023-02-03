@@ -4,7 +4,16 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/mainMenu.unity
+    guid: 6299f653678cfaf4ca11823de600b556
+  - enabled: 1
+    path: Assets/Scenes/Level_1.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Gesture Cutomization.unity
+    guid: 61dafcd79ecf06549891e54fdc57fccd
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: be0bc3ff4fc2e2349b18651a441c549c, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 00f6538e16534604488f1b2dddfd8dab, type: 2}

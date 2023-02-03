@@ -852,6 +852,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "LightSaber",
+                    "type": "Button",
+                    "id": "0e9b84ff-9716-42ad-b243-4ae27e501e4e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1074,6 +1083,17 @@
                     "action": "GravityZonePull",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "103c7e11-278e-4ac7-82e6-bbdb5bb5026a",
+                    "path": "<OculusTouchController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "LightSaber",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -1169,6 +1189,34 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Turn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "XRI RightHand Velocity",
+            "id": "ee734883-5c6c-4c65-bced-7c9ecd78dfe5",
+            "actions": [
+                {
+                    "name": "Velocity",
+                    "type": "Value",
+                    "id": "9faaf5ae-405e-4685-b62b-289061f27b15",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "8f19e350-913b-4344-97b7-c0df096fba19",
+                    "path": "<OculusTouchController>{RightHand}/devicePose/velocity",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Velocity",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

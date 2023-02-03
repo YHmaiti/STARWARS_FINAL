@@ -7,6 +7,9 @@ TagManager:
   - Enemy
   - MainGround
   - Bullet
+  - playButton
+  - gestureButton
+  - quitButton
   layers:
   - Default
   - TransparentFX
