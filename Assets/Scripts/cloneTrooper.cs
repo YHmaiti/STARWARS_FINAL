@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,31 +11,66 @@ public class cloneTrooper : MonoBehaviour
     public NavMeshAgent Enemy;
     public Transform playerPosition;
     private Animator animator;
-    public GameObject Blaster;
-    public GameObject blasterRay;
-    //public GameObject CloneTrooper;
-    //public GameObject Player;
-    // Start is called before the first frame update
+    private int HP = 30;
+    public Transform target;
+    [SerializeField] private int speed = 5;
+    [SerializeField] AudioClip hit;
+    [SerializeField] AudioClip Death;
+    public bool Alive;
     void Start()
     {
         animator = this.GetComponent<Animator>();
         animator.SetBool("isDead", false);
         animator.SetBool("isMoving", true);
-        //Enemy = GetComponent<NavMeshAgent>();
-        // rotate blaster to face player
-       // blasterRay.transform.LookAt(playerPosition);
-        
+        Alive = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(playerPosition);
+        enemyMovement();
+        // if hp is 0 then destroy the enemy
+        if (HP <= 0)
+        {
+            Alive = false;
+            animator.SetBool("isDead", true);
+            animator.SetBool("isMoving", false);
+            Destroy(this.gameObject, 2);
+        }
+
+    }
+    // check and see if there is trigger enter subtract from hp
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Bullet")
+        {
+            GetComponent<AudioSource>().PlayOneShot(hit);
+            HP -= 10;
+            // destroy gameobject
+            Destroy(other.gameObject);
+        }
+        else if (other.gameObject.tag=="lighSaber" || other.gameObject.tag == "Lightning")
+        {
+            HP = 0;
+        }
+    }
+    // Enemy animation and position
+    public void enemyMovement()
+    {
+        // transform.LookAt(playerPosition);
         Enemy.SetDestination(playerPosition.position);
         // if reached player then stop moving
         if (Vector3.Distance(transform.position, playerPosition.position) < 10f)
         {
             animator.SetBool("isMoving", false);
         }
+        else
+        {
+            animator.SetBool("isMoving", true);
+        }
+        Vector3 relativePos = target.position - transform.position;
+        Quaternion rotation = Quaternion.LookRotation(relativePos);
+        Quaternion current = transform.localRotation;
+        transform.localRotation = Quaternion.Slerp(current, rotation, Time.deltaTime * speed);
     }
 }

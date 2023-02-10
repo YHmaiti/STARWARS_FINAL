@@ -29,7 +29,7 @@ Shader "VolumetricLine/SingleLine-LightSaber" {
 		_LineScale ("Line Scale", Float) = 1.0
 		_LightSaberFactor ("LightSaberFactor", Range(0.0, 1.0)) = 0.9
 		[MaterialToggle] _UvBasedLightSaberFactor("UV-Based Light Saber Calculation (Anti-Aliased)", Int) = 0
-		_Color ("Main Color", Color) = (1,1,1,1)
+		_Color ("Main Color", Color) = (0,255,0,255)
 	}
 	SubShader {
 		// batching is forcefully disabled here because the shader simply won't work with it:

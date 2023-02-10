@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR;
 using Gestures;
+using static OVRPlugin;
+using static UnityEngine.GraphicsBuffer;
 
 public class lightSaber : MonoBehaviour
 {
@@ -26,15 +28,10 @@ public class lightSaber : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       // audio = gameObject.GetComponent<AudioSource>();
-        //audio.spatialBlend = 1;
-       // audio.volume = 0.5f;
-        
         Saber = transform.Find("SingleLine-LightSaber").gameObject;
         saberLength = Saber.transform.localScale;
         Saber.transform.localScale = new Vector3(saberLength.x, 0, saberLength.z);
         Saber.SetActive(false);
-
     }
     // Update is called once per frame
     void Update()
@@ -42,11 +39,11 @@ public class lightSaber : MonoBehaviour
         powerButton();
         lightSaber_Power();
         // if velocity greater than 6 then playsound
-        if (rightVelocity.action.ReadValue<Vector3>().magnitude > 6)
+       /* if (rightVelocity.action.ReadValue<Vector3>().magnitude > 6)
         {
              GetComponent<AudioSource>().PlayOneShot(saberMovingSound);
         }
-        else if (GetComponent<AudioSource>().isPlaying == false && On)
+        else*/ if (GetComponent<AudioSource>().isPlaying == false && On)
         {
             GetComponent<AudioSource>().PlayOneShot(saberNormalSound);
             Hum = true;

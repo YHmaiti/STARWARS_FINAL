@@ -1,13 +1,21 @@
 using Jackknife;
+using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using DigitalRuby.LightningBolt;
+using Unity.VisualScripting;
 
 namespace Gestures
 {
     public class Recognizer : MonoBehaviour
-    {   // TODO make the classification async
+    {
+        //public lightning lightning_var;
+        [SerializeField] AudioClip LightningSound;
+        
+        // TODO make the classification async
         [Tooltip("Don't touch, unless want to use a different set (requires modifying the Dictionary)")]
         public string gestureDirectoryPath;
 
@@ -125,6 +133,24 @@ namespace Gestures
                 case 4:
                     // Two hands forward
                     //Events.spawn_lightning.Invoke();
+                    // Afind lightning game object
+                    // lightning lightning_var = GameObject.Find("Lightning").GetComponent<lightning>();
+                    // print($"HELLO {lightning_var.name}");
+                    // activate lightning
+                    //if (lightning_var.recharge == true)
+                    //{
+                    //lightning_var.activate = true;
+                    /*  lightning_var.gameObject.SetActive(true);
+                      StartCoroutine(Deactivate(lightning_var.gameObject));
+                  }*/
+                    GameObject lightningObject = GameObject.Find("LightningObject");
+                    lightningObject.GetComponent<LightningBoltScript>().Trigger();
+                    lightningObject.GetComponent<AudioSource>().PlayOneShot(LightningSound);
+                    if (lightningObject.GetComponent<LightningBoltScript>().ManualMode)
+                    {
+                        //stop playing audio
+                        StartCoroutine(Deactivate());
+                    }
                     break;
 
                 case 5:
@@ -138,6 +164,13 @@ namespace Gestures
                 default:
                     throw new System.Exception("Call Gesture Action went wrong. Possible missclasification");
             }
+        }
+
+        private IEnumerator Deactivate()
+        {
+            yield return new WaitForSeconds(1f);
+            GameObject lightningObject = GameObject.Find("LightningObject");
+            lightningObject.GetComponent<AudioSource>().Stop();
         }
 
         private int ClassifyTrajectory(List<Vector> trajectory)
