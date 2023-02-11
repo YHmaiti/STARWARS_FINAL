@@ -145,6 +145,7 @@ namespace Gestures
                   }*/
                     GameObject lightningObject = GameObject.Find("LightningObject");
                     lightningObject.GetComponent<LightningBoltScript>().Trigger();
+                    lightningObject.GetComponent<Collider>().enabled = true;
                     lightningObject.GetComponent<AudioSource>().PlayOneShot(LightningSound);
                     if (lightningObject.GetComponent<LightningBoltScript>().ManualMode)
                     {
@@ -156,6 +157,8 @@ namespace Gestures
                 case 5:
                     // heal - two hands up and forward, or cross
                     //Events.heal_event.Invoke();
+                    GameObject Player = GameObject.Find("Player_XR Origin");
+                    Player.GetComponent<playerHP>().selfHeal();
                     break;
 
                 case 6:
@@ -171,6 +174,7 @@ namespace Gestures
             yield return new WaitForSeconds(1f);
             GameObject lightningObject = GameObject.Find("LightningObject");
             lightningObject.GetComponent<AudioSource>().Stop();
+            lightningObject.GetComponent<Collider>().enabled = false;
         }
 
         private int ClassifyTrajectory(List<Vector> trajectory)

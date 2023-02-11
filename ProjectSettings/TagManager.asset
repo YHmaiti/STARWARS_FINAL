@@ -12,6 +12,8 @@ TagManager:
   - quitButton
   - lightSaber
   - Lightning
+  - ShootingTarget
+  - Stone
   layers:
   - Default
   - TransparentFX

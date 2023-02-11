@@ -24,7 +24,8 @@ public class ShotBehavior : MonoBehaviour {
             {
                 transform.position = Vector3.MoveTowards(transform.position, target.position, step);
                 Vector3 newLook = Vector3.RotateTowards(transform.forward, target.position, step, 0.0f);
-                newLook.x = -90f;
+                newLook.x = 90f;
+                newLook.z = 100f;
                 transform.rotation = Quaternion.LookRotation(newLook);
             }
         }

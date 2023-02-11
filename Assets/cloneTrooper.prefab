@@ -1570,12 +1570,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  Player: {fileID: 0}
   projectile: {fileID: 136330, guid: 9a0c3383523899643a8d0661cfaca4e4, type: 3}
   trooper: {fileID: 3569561403882200403}
   shootCooldown: 5
   midbody: {fileID: 4416000431152434045}
   Alive: 0
+  firstShoot: 0
   Blaster: {fileID: 8300000, guid: c428dd7f22931e64d88c79ea209ef324, type: 3}
+  Parent: {fileID: 0}
 --- !u!82 &4416000430626798165
 AudioSource:
   m_ObjectHideFlags: 0

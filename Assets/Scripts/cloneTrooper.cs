@@ -30,6 +30,8 @@ public class cloneTrooper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        playerPosition = GameObject.Find("Player_XR Origin").transform;
+        target = playerPosition;
         enemyMovement();
         // if hp is 0 then destroy the enemy
         if (HP <= 0)

@@ -36,13 +36,14 @@ public class EnemyManager : MonoBehaviour
     void Update()
     {
        // bool spawnReady = true;
-        Debug.Log("Ready: " + spawnReady);
+        
         switch (spawnLevel)
         {
             case 1:
                 {
                     cloneCount = GameObject.FindGameObjectsWithTag("Enemy");
-                    if(counter != maxEnemies1 && spawnReady)
+                    Debug.Log("Ready: " + cloneCount.Length);
+                    if (counter != maxEnemies1 && spawnReady)
                     {
                         spawnNewEnemy();
                         counter++;

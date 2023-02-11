@@ -5,6 +5,7 @@ using UnityEngine;
 public class playerHP : MonoBehaviour
 {
     public int health = 100;
+    public bool healReady = true;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Bullet")
@@ -22,5 +23,25 @@ public class playerHP : MonoBehaviour
         {
             Debug.Log("You died");
         }
+    }
+
+    public void selfHeal()
+    {
+        if(healReady )
+        {
+            health = 100;
+            healReady = false;
+            StartCoroutine(healWait());
+        }
+        else
+        {
+            Debug.Log("Heal not ready");
+        }
+    }
+
+    private IEnumerator healWait()
+    {
+        yield return new WaitForSeconds(5);
+        healReady = true;
     }
 }
