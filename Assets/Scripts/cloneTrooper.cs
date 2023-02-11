@@ -23,6 +23,8 @@ public class cloneTrooper : MonoBehaviour
         animator.SetBool("isDead", false);
         animator.SetBool("isMoving", true);
         Alive = true;
+        playerPosition = GameObject.Find("Player_XR Origin").transform;
+        target = playerPosition;
     }
 
     // Update is called once per frame

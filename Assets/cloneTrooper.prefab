@@ -1089,7 +1089,7 @@ GameObject:
   - component: {fileID: 4416000431614517275}
   - component: {fileID: 4416000431614517272}
   m_Layer: 7
-  m_Name: Clone Trooper (Phase2) [Rigged]@Firing Rifle
+  m_Name: cloneTrooper
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

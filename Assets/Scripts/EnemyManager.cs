@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,12 +16,18 @@ public class EnemyManager : MonoBehaviour
     public int maxEnemies2 = 20;
     public int maxEnemies3 = 30;
     public int spawnLevel = 1;
-    public bool ready;
+    public bool spawnReady;
     public int counter = 0;
+    public GameObject[] cloneCount;
     // Start is called before the first frame update
+    private void Start()
+    {
+        spawnReady = true;
+       // StartCoroutine(SpawnWaves());
+    }
+
     private void spawnNewEnemy()
     {
-        Random.seed = (int)DateTime.Now.Ticks;
         int randomNumber = Mathf.RoundToInt(Random.Range(0f,spawnPoints.Length-1));
         Instantiate(enemy, spawnPoints[randomNumber].transform.position,Quaternion.identity);
     }
@@ -28,19 +35,21 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Ready: " + ready);
+       // bool spawnReady = true;
+        Debug.Log("Ready: " + spawnReady);
         switch (spawnLevel)
         {
             case 1:
                 {
-                    if(counter != maxEnemies1 && ready)
+                    cloneCount = GameObject.FindGameObjectsWithTag("Enemy");
+                    if(counter != maxEnemies1 && spawnReady)
                     {
                         spawnNewEnemy();
                         counter++;
-                        ready = false;
+                        spawnReady = false;
                         StartCoroutine(spawnWait(spawnLevel));
                     }
-                    if(counter == maxEnemies1)
+                    if(counter == maxEnemies1 && cloneCount.Length == 0)
                     {
                         spawnLevel = 2;
                         counter = 0;
@@ -48,26 +57,30 @@ public class EnemyManager : MonoBehaviour
                 }
                 break;
             case 2:
-                if (counter != maxEnemies2 && ready)
+                if (counter != maxEnemies2 && spawnReady)
                 {
                     spawnNewEnemy();
                     counter++;
-                    ready = false;
+                    spawnReady = false;
                     StartCoroutine(spawnWait(spawnLevel));
                 }
-                if (counter == maxEnemies2)
+                if (counter == maxEnemies2 && cloneCount.Length == 0)
                 {
                     spawnLevel = 3;
                     counter = 0;
                 }
                 break;
             case 3:
-                if (counter != maxEnemies3 && ready)
+                if (counter != maxEnemies3 && spawnReady)
                 {
                     spawnNewEnemy();
                     counter++;
-                    ready = false;
+                    spawnReady = false;
                     StartCoroutine(spawnWait(spawnLevel));
+                }
+                if (counter != maxEnemies3 && cloneCount.Length == 0)
+                {
+                    Debug.Log("You Win!");
                 }
                 break;
             default:
@@ -82,15 +95,15 @@ public class EnemyManager : MonoBehaviour
         {
             case 1:
                 yield return new WaitForSeconds(spawnTime1);
-                ready = true;
+                spawnReady = true;
                 break;
             case 2:
                 yield return new WaitForSeconds(spawnTime2);
-                ready = true;
+                spawnReady = true;
                 break;
             case 3:
                 yield return new WaitForSeconds(spawnTime3);
-                ready = true;
+                spawnReady = true;
                 break;
             default:
                 break;
