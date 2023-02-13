@@ -32,6 +32,7 @@ public class playerHP : MonoBehaviour
             health = 100;
             healReady = false;
             StartCoroutine(healWait());
+            Debug.Log("Health: " + health);
         }
         else
         {

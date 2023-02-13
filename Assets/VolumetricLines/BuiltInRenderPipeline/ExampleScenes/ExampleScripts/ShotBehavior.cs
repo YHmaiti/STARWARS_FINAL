@@ -7,6 +7,7 @@ public class ShotBehavior : MonoBehaviour {
     public Transform originalEnemy;
     public float step;
     public bool reflected = false;
+    
     //public GameObject trooper;
     // Use this for initialization
     void Start () {

@@ -54,6 +54,7 @@ public class EnemyManager : MonoBehaviour
                     {
                         spawnLevel = 2;
                         counter = 0;
+                        Debug.Log("Level 1 finished");
                     }
                 }
                 break;
@@ -69,6 +70,7 @@ public class EnemyManager : MonoBehaviour
                 {
                     spawnLevel = 3;
                     counter = 0;
+                    Debug.Log("Level 2 finished");
                 }
                 break;
             case 3:
@@ -81,7 +83,7 @@ public class EnemyManager : MonoBehaviour
                 }
                 if (counter != maxEnemies3 && cloneCount.Length == 0)
                 {
-                    Debug.Log("You Win!");
+                    Debug.Log("You have Survived!");
                 }
                 break;
             default:

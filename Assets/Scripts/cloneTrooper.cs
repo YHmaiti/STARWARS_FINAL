@@ -46,14 +46,28 @@ public class cloneTrooper : MonoBehaviour
     // check and see if there is trigger enter subtract from hp
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Bullet")
+        bool reflect = other.GetComponent<ShotBehavior>().reflected;
+        if (other.gameObject.tag == "Bullet" && reflect)
         {
             GetComponent<AudioSource>().PlayOneShot(hit);
             HP -= 10;
             // destroy gameobject
             Destroy(other.gameObject);
         }
-        else if (other.gameObject.tag=="lighSaber" || other.gameObject.tag == "Lightning")
+        else if (other.gameObject.tag=="lighSaber" || other.gameObject.tag == "Lightning" )
+        {
+            HP = 0;
+        }
+       /* else if (other.gameObject.tag == "Stone")
+        {
+            HP = 0;
+        }*/
+    }
+
+    //ON collision with stone 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Stone")
         {
             HP = 0;
         }
