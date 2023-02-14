@@ -145,11 +145,12 @@ namespace Gestures
                   }*/
                     GameObject lightningObject = GameObject.Find("LightningObject");
                     lightningObject.GetComponent<LightningBoltScript>().Trigger();
-                    lightningObject.GetComponent<Collider>().enabled = true;
+                    lightningObject.GetComponent<Collider>().enabled  = true;
                     lightningObject.GetComponent<AudioSource>().PlayOneShot(LightningSound);
                     if (lightningObject.GetComponent<LightningBoltScript>().ManualMode)
                     {
                         //stop playing audio
+                       // lightningObject.GetComponent<Collider>().enabled = false;
                         StartCoroutine(Deactivate());
                     }
                     break;
@@ -171,7 +172,7 @@ namespace Gestures
 
         private IEnumerator Deactivate()
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
             GameObject lightningObject = GameObject.Find("LightningObject");
             lightningObject.GetComponent<AudioSource>().Stop();
             lightningObject.GetComponent<Collider>().enabled = false;

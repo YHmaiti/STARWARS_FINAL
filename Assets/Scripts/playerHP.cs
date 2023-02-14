@@ -6,6 +6,7 @@ public class playerHP : MonoBehaviour
 {
     public int health = 100;
     public bool healReady = true;
+    //public GameObject healthSlider;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Bullet")

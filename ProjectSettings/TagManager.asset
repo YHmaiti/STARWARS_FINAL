@@ -14,6 +14,8 @@ TagManager:
   - Lightning
   - ShootingTarget
   - Stone
+  - stoneSpawn
+  - Saber
   layers:
   - Default
   - TransparentFX
