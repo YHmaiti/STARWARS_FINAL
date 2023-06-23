@@ -12,9 +12,9 @@ public class EnemyManager : MonoBehaviour
     public float spawnTime1 = 1f;
     public float spawnTime2 = 0.5f;
     public float spawnTime3 = 0.2f;
-    public int maxEnemies1 = 5;
-    public int maxEnemies2 = 10;
-    public int maxEnemies3 = 15;
+    public int maxEnemies1 = 2;
+    public int maxEnemies2 = 5;
+    public int maxEnemies3 = 6;
     public int spawnLevel = 1;
     public bool spawnReady;
     public int counter = 0;
