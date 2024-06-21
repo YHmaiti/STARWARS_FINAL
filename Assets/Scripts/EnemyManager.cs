@@ -12,37 +12,38 @@ public class EnemyManager : MonoBehaviour
     public float spawnTime1 = 1f;
     public float spawnTime2 = 0.5f;
     public float spawnTime3 = 0.2f;
-    public int maxEnemies1 = 2;
-    public int maxEnemies2 = 5;
-    public int maxEnemies3 = 6;
+    public int maxEnemies1 = 5;
+    public int maxEnemies2 = 10;
+    public int maxEnemies3 = 15;
     public int spawnLevel = 1;
     public bool spawnReady;
     public int counter = 0;
     public GameObject[] cloneCount;
+
     // Start is called before the first frame update
     private void Start()
     {
         spawnReady = true;
-       // StartCoroutine(SpawnWaves());
+        // StartCoroutine(SpawnWaves());
     }
 
     private void spawnNewEnemy()
     {
-        int randomNumber = Mathf.RoundToInt(Random.Range(0f,spawnPoints.Length-1));
-        Instantiate(enemy, spawnPoints[randomNumber].transform.position,Quaternion.identity);
+        int randomNumber = Mathf.RoundToInt(Random.Range(0f, spawnPoints.Length - 1));
+        Instantiate(enemy, spawnPoints[randomNumber].transform.position, Quaternion.identity);
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-       // bool spawnReady = true;
-        
+        // bool spawnReady = true;
+
         switch (spawnLevel)
         {
             case 1:
                 {
                     cloneCount = GameObject.FindGameObjectsWithTag("Enemy");
-                    Debug.Log("Ready: " + cloneCount.Length);
+                    //Debug.Log("Ready: " + cloneCount.Length);
                     if (counter != maxEnemies1 && spawnReady)
                     {
                         spawnNewEnemy();
@@ -50,7 +51,7 @@ public class EnemyManager : MonoBehaviour
                         spawnReady = false;
                         StartCoroutine(spawnWait(spawnLevel));
                     }
-                    if(counter == maxEnemies1 && cloneCount.Length == 0)
+                    if (counter == maxEnemies1 && cloneCount.Length == 0)
                     {
                         spawnLevel = 2;
                         counter = 0;
@@ -58,6 +59,7 @@ public class EnemyManager : MonoBehaviour
                     }
                 }
                 break;
+
             case 2:
                 if (counter != maxEnemies2 && spawnReady)
                 {
@@ -73,6 +75,7 @@ public class EnemyManager : MonoBehaviour
                     Debug.Log("Level 2 finished");
                 }
                 break;
+
             case 3:
                 if (counter != maxEnemies3 && spawnReady)
                 {
@@ -86,12 +89,12 @@ public class EnemyManager : MonoBehaviour
                     Debug.Log("You have Survived!");
                 }
                 break;
+
             default:
                 break;
         }
-
-
     }
+
     private IEnumerator spawnWait(int level)
     {
         switch (level)
@@ -100,14 +103,17 @@ public class EnemyManager : MonoBehaviour
                 yield return new WaitForSeconds(spawnTime1);
                 spawnReady = true;
                 break;
+
             case 2:
                 yield return new WaitForSeconds(spawnTime2);
                 spawnReady = true;
                 break;
+
             case 3:
                 yield return new WaitForSeconds(spawnTime3);
                 spawnReady = true;
                 break;
+
             default:
                 break;
         }

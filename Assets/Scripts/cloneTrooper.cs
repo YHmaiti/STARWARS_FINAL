@@ -9,15 +9,17 @@ public class cloneTrooper : MonoBehaviour
 {
     // Creat enemy and make them shoot at the player
     public NavMeshAgent Enemy;
+
     public Transform playerPosition;
     private Animator animator;
     private int HP = 30;
     public Transform target;
     [SerializeField] private int speed = 5;
-    [SerializeField] AudioClip hit;
-    [SerializeField] AudioClip Death;
+    [SerializeField] private AudioClip hit;
+    [SerializeField] private AudioClip Death;
     public bool Alive;
-    void Start()
+
+    private void Start()
     {
         animator = this.GetComponent<Animator>();
         animator.SetBool("isDead", false);
@@ -28,7 +30,7 @@ public class cloneTrooper : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         playerPosition = GameObject.Find("Player_XR Origin").transform;
         target = playerPosition;
@@ -38,12 +40,12 @@ public class cloneTrooper : MonoBehaviour
         {
             Dead();
         }
-
     }
+
     // check and see if there is trigger enter subtract from hp
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Bullet")
+        if (other.gameObject.tag == "Bullet")
         {
             bool reflect = other.GetComponent<ShotBehavior>().reflected;
             if (other.gameObject.tag == "Bullet" && reflect)
@@ -58,22 +60,23 @@ public class cloneTrooper : MonoBehaviour
         {
             Dead();
         }
-       /* else if (other.gameObject.tag == "Stone")
-        {
-            HP = 0;
-        }*/
+        /* else if (other.gameObject.tag == "Stone")
+         {
+             HP = 0;
+         }*/
     }
 
-    //ON collision with stone 
-/*    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Stone")
+    //ON collision with stone
+    /*    private void OnCollisionEnter(Collision collision)
         {
-            *//*GameObject.Find("Stone").GetComponent<throwObject>().spawnStone();
-            Destroy(collision.gameObject);*//*
-            Dead();
-        }
-    }*/
+            if (collision.gameObject.tag == "Stone")
+            {
+                *//*GameObject.Find("Stone").GetComponent<throwObject>().spawnStone();
+                Destroy(collision.gameObject);*//*
+                Dead();
+            }
+        }*/
+
     // Enemy animation and position
     public void enemyMovement()
     {
@@ -93,6 +96,7 @@ public class cloneTrooper : MonoBehaviour
         Quaternion current = transform.localRotation;
         transform.localRotation = Quaternion.Slerp(current, rotation, Time.deltaTime * speed);
     }
+
     public void Dead()
     {
         Alive = false;

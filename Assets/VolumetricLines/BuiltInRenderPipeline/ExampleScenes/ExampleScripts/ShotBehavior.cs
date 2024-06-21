@@ -1,44 +1,56 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
-public class ShotBehavior : MonoBehaviour {
-	public Transform target;
-	public float speed;
+public class ShotBehavior : MonoBehaviour
+{
+    private Vector3 playerPositionAsOfShot;
+    public float speed;
     public Transform originalEnemy;
     public float step;
     public bool reflected = false;
-    
-    //public GameObject trooper;
-    // Use this for initialization
-    void Start () {
-        
 
+    private Vector3 lastKnownEnemyPosition;
+
+    private void Start()
+    {
+        StartCoroutine(DestroyAfterTime(50));
     }
-	
-	// Update is called once per frame
-	void Update () 
-	{
-        step = speed * Time.deltaTime;
-        if (reflected == false)
+
+    private IEnumerator DestroyAfterTime(int seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        Destroy(gameObject);
+    }
+
+    // On destroy, cancel the coroutine
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
+    }
+
+    private void Update()
+    {
+        // Check if object has been destroyed or not
+        if (originalEnemy != null)
         {
-            if (target != null)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, target.position, step);
-                Vector3 newLook = Vector3.RotateTowards(transform.forward, target.position, step, 0.0f);
-                newLook.x = 90f;
-                newLook.z = 100f;
-                transform.rotation = Quaternion.LookRotation(newLook);
-            }
+            lastKnownEnemyPosition = originalEnemy.position;
+        }
+
+        step = speed * Time.deltaTime;
+
+        if (reflected)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, lastKnownEnemyPosition, step);
         }
         else
         {
-            transform.position = Vector3.MoveTowards(transform.position, originalEnemy.position, step);
+            transform.position = Vector3.MoveTowards(transform.position, playerPositionAsOfShot, step);
         }
     }
 
-    
-    public void setTarget(Transform t)
+    public void SetTarget(Transform player)
     {
-        target = t;
+        playerPositionAsOfShot = player.position;
+        transform.forward = playerPositionAsOfShot - transform.position;
     }
 }
