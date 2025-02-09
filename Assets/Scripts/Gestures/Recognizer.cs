@@ -124,50 +124,6 @@ namespace Gestures
             switch (gestureId)
             {
                 case 1: // sphere
-                    //GameObject wave = GameObject.Find("wave");
-
-                    //if (wave == null)
-                    //{
-                    //    Debug.LogError("Wave object not found!");
-                    //    return;
-                    //}
-
-                    //Debug.Log("Wave unparented");
-
-                    //// Activate the wave
-                    //wave.SetActive(true);
-
-                    //// Enable its collider
-                    //Collider waveCollider = wave.GetComponent<Collider>();
-                    //if (waveCollider == null)
-                    //{
-                    //    Debug.LogError("Wave object does not have a Collider component!");
-                    //}
-                    //else
-                    //{
-                    //    waveCollider.enabled = true;
-                    //}
-
-                    //// Apply velocity
-                    //Rigidbody waveRb = wave.GetComponent<Rigidbody>();
-                    //if (waveRb == null)
-                    //{
-                    //    Debug.LogError("Wave object does not have a Rigidbody component!");
-                    //}
-                    //else
-                    //{
-                    //    waveRb.velocity = transform.forward * 10f;
-                    //}
-
-                    //// Debug gesture info safely
-                    //if (GestureIdToGestureName.TryGetValue(gestureId, out string gestureName))
-                    //{
-                    //    Debug.Log("Wave going forward " + gestureName);
-                    //}
-                    //else
-                    //{
-                    //    Debug.LogWarning("Gesture ID not found in dictionary!");
-                    //}
 
 
                     break;
@@ -176,26 +132,13 @@ namespace Gestures
                     break;
 
                 case 3: // cube
-                    //GameObject wave = GameObject.Find("wave");
-                    //// active the wave object and send it forward towards the enemies and it grows as a wave size wize start from 0 0 0 and go up
-                    //wave.SetActive(true);
-                    //wave.GetComponent<AudioSource>().PlayOneShot(LightningSound);
-                    //wave.GetComponent<Collider>().enabled = true;
-                    //wave.GetComponent<Rigidbody>().velocity = transform.forward * 10f;
-                    //StartCoroutine(Deactivate());
-
-                    //for (int i = 0; i < 30; i++)
-                    //{
-                    //    wave.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
-                    //    wave.transform.position += new Vector3(0, 0.1f, 0);
-                    //    // wait for 0.1s use a loop for this
-                    //    System.Threading.Thread.Sleep(10);
-                    //}
-
-
-                    //Debug.Log("wave going forward" + GestureIdToGestureName[gestureId]);
-                    //wave.SetActive(false);
-                    //break;
+                    // FIND A GAMEOBJKECT CALLED LightSaber2 AND MAKE IT A SHILD OF THE LEFT HAND
+                    GameObject LightSaber2 = GameObject.Find("LightSaber2");
+                    GameObject LeftHand = GameObject.Find("LeftHand Controller");
+                    LightSaber2.transform.SetParent(LeftHand.transform);
+                    LightSaber2.transform.localPosition = new Vector3(0, 0, 0);
+                    LightSaber2.transform.localRotation = Quaternion.Euler(0, 0, 0);
+                    break;  
 
                 case 4: // star
                     // Two hands forward

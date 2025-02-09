@@ -58,6 +58,18 @@ public class lightSaber : MonoBehaviour
         {
             saberOn = !saberOn;
         }
+
+        // check if the Y button was pressed
+        if (AButton.action.WasReleasedThisFrame())
+        {
+            saberOn = !saberOn;
+        }
+
+    }
+
+    public void activateSaber2()
+    {
+
     }
     private void lightSaber_Power()
     {
