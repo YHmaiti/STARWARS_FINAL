@@ -119,16 +119,90 @@ namespace Gestures
             switch (gestureId)
             {
                 case 1:
-                    break;
+                    //GameObject lightningObject2 = GameObject.Find("LightningObject");
+
+                    //// Ensure it's active and ready
+                    //lightningObject2.SetActive(true);
+                    //lightningObject2.GetComponent<LightningBoltScript>().Trigger();
+                    //lightningObject2.GetComponent<Collider>().enabled = true;
+                    //lightningObject2.GetComponent<AudioSource>().PlayOneShot(LightningSound);
+                    //// Adjust position to be in front of the player and move horizontally
+                    //lightningObject2.transform.position = transform.position + transform.forward * 1.5f; // Adjust offset if needed
+                    //lightningObject2.transform.rotation = Quaternion.LookRotation(transform.forward); // Make sure it faces forward
+
+                    //// Play lightning sound
+
+                    //// Move lightning forward horizontally (assuming Rigidbody is attached)
+                    //lightningObject2.GetComponent<Rigidbody>().velocity = transform.forward * 10f; // Adjust speed
+
+                    //if (lightningObject2.GetComponent<LightningBoltScript>().ManualMode)
+                    //{
+                    //    //stop playing audio
+                    //    // lightningObject.GetComponent<Collider>().enabled = false;
+                    //    StartCoroutine(Deactivate());
+                    //}
+
+                    //Debug.Log("Lightning Bolt horizental Triggered" + GestureIdToGestureName[gestureId]);
+
+                    //break;
+                    //break;
 
                 case 2:
-                    // Slow down time (or time warp, whichever)
+                    GameObject lightningObject2 = GameObject.Find("LightningObject");
+
+                    // Ensure it's active and ready
+                    lightningObject2.SetActive(true);
+                    lightningObject2.GetComponent<LightningBoltScript>().Trigger();
+                    lightningObject2.GetComponent<Collider>().enabled = true;
+                    lightningObject2.GetComponent<AudioSource>().PlayOneShot(LightningSound);
+                    // Adjust position to be in front of the player and move horizontally
+                    lightningObject2.transform.position = transform.position + transform.forward * 1.5f; // Adjust offset if needed
+                    lightningObject2.transform.rotation = Quaternion.LookRotation(transform.forward); // Make sure it faces forward
+
+                    // Play lightning sound
+
+                    // Move lightning forward horizontally (assuming Rigidbody is attached)
+                    lightningObject2.GetComponent<Rigidbody>().velocity = transform.forward * 10f; // Adjust speed
+
+                    if (lightningObject2.GetComponent<LightningBoltScript>().ManualMode)
+                    {
+                        //stop playing audio
+                        // lightningObject.GetComponent<Collider>().enabled = false;
+                        StartCoroutine(Deactivate());
+                    }
+
+                    Debug.Log("Lightning Bolt horizental Triggered" + GestureIdToGestureName[gestureId]);
+
+                    break;
                     break;
 
                 case 3:
-                    // Two hands up down - energy boost
-                    //Events.intialize_boost_event.Invoke();
-                    break;
+                    //GameObject lightningObject2 = GameObject.Find("LightningObject");
+
+                    //// Ensure it's active and ready
+                    //lightningObject2.SetActive(true);
+                    //lightningObject2.GetComponent<LightningBoltScript>().Trigger();
+                    //lightningObject2.GetComponent<Collider>().enabled = true;
+                    //lightningObject2.GetComponent<AudioSource>().PlayOneShot(LightningSound);
+                    //// Adjust position to be in front of the player and move horizontally
+                    //lightningObject2.transform.position = transform.position + transform.forward * 1.5f; // Adjust offset if needed
+                    //lightningObject2.transform.rotation = Quaternion.LookRotation(transform.forward); // Make sure it faces forward
+
+                    //// Play lightning sound
+
+                    //// Move lightning forward horizontally (assuming Rigidbody is attached)
+                    //lightningObject2.GetComponent<Rigidbody>().velocity = transform.forward * 10f; // Adjust speed
+
+                    //if (lightningObject2.GetComponent<LightningBoltScript>().ManualMode)
+                    //{
+                    //    //stop playing audio
+                    //    // lightningObject.GetComponent<Collider>().enabled = false;
+                    //    StartCoroutine(Deactivate());
+                    //}
+
+                    //Debug.Log("Lightning Bolt horizental Triggered" + GestureIdToGestureName[gestureId]);
+
+                    //break;
 
                 case 4:
                     // Two hands forward
@@ -153,6 +227,8 @@ namespace Gestures
                        // lightningObject.GetComponent<Collider>().enabled = false;
                         StartCoroutine(Deactivate());
                     }
+
+                    Debug.Log("Lightning Bolt normal Triggered" + GestureIdToGestureName[gestureId]); // star
                     break;
 
                 case 5:
@@ -160,10 +236,36 @@ namespace Gestures
                     //Events.heal_event.Invoke();
                     GameObject Player = GameObject.Find("Player_XR Origin");
                     Player.GetComponent<playerHP>().selfHeal();
+                    Debug.Log("Heal Triggered" + GestureIdToGestureName[gestureId]); // pyramid
                     break;
 
                 case 6:
-                    break;
+                    //GameObject lightningObject2 = GameObject.Find("LightningObject");
+
+                    //// Ensure it's active and ready
+                    //lightningObject2.SetActive(true);
+                    //lightningObject2.GetComponent<LightningBoltScript>().Trigger();
+                    //lightningObject2.GetComponent<Collider>().enabled = true;
+                    //lightningObject2.GetComponent<AudioSource>().PlayOneShot(LightningSound);
+                    //// Adjust position to be in front of the player and move horizontally
+                    //lightningObject2.transform.position = transform.position + transform.forward * 1.5f; // Adjust offset if needed
+                    //lightningObject2.transform.rotation = Quaternion.LookRotation(transform.forward); // Make sure it faces forward
+
+                    //// Play lightning sound
+
+                    //// Move lightning forward horizontally (assuming Rigidbody is attached)
+                    //lightningObject2.GetComponent<Rigidbody>().velocity = transform.forward * 10f; // Adjust speed
+
+                    //if (lightningObject2.GetComponent<LightningBoltScript>().ManualMode)
+                    //{
+                    //    //stop playing audio
+                    //    // lightningObject.GetComponent<Collider>().enabled = false;
+                    //    StartCoroutine(Deactivate());
+                    //}
+
+                    //Debug.Log("Lightning Bolt horizental Triggered" + GestureIdToGestureName[gestureId]);
+
+                    //break;
 
                 default:
                     throw new System.Exception("Call Gesture Action went wrong. Possible missclasification");
