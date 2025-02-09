@@ -56,7 +56,7 @@ public class cloneTrooper : MonoBehaviour
                 Destroy(other.gameObject);
             }
         }
-        else if (other.gameObject.tag == "Saber" || other.gameObject.tag == "Lightning" || other.gameObject.tag == "Stone")
+        else if (other.gameObject.tag == "Saber" || other.gameObject.tag == "Lightning" || other.gameObject.tag == "Stone" || other.gameObject.name == "wave")
         {
             Dead();
         }
