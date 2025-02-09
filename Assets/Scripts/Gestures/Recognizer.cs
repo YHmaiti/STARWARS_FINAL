@@ -108,9 +108,14 @@ namespace Gestures
                 CallGestureAction(classifiedGestureId);
             }
         }
-
+        Transform originalParent;
         private void CallGestureAction(int gestureId)
         {
+
+            foreach (var gesture in GestureIdToGestureName)
+            {
+                Debug.Log($"Gesture: {gesture.Key} - {gesture.Value}");
+            }
             if (disableActionExecution)
             {
                 return;
@@ -118,93 +123,81 @@ namespace Gestures
 
             switch (gestureId)
             {
-                case 1:
-                    //GameObject lightningObject2 = GameObject.Find("LightningObject");
+                case 1: // sphere
+                    //GameObject wave = GameObject.Find("wave");
 
-                    //// Ensure it's active and ready
-                    //lightningObject2.SetActive(true);
-                    //lightningObject2.GetComponent<LightningBoltScript>().Trigger();
-                    //lightningObject2.GetComponent<Collider>().enabled = true;
-                    //lightningObject2.GetComponent<AudioSource>().PlayOneShot(LightningSound);
-                    //// Adjust position to be in front of the player and move horizontally
-                    //lightningObject2.transform.position = transform.position + transform.forward * 1.5f; // Adjust offset if needed
-                    //lightningObject2.transform.rotation = Quaternion.LookRotation(transform.forward); // Make sure it faces forward
-
-                    //// Play lightning sound
-
-                    //// Move lightning forward horizontally (assuming Rigidbody is attached)
-                    //lightningObject2.GetComponent<Rigidbody>().velocity = transform.forward * 10f; // Adjust speed
-
-                    //if (lightningObject2.GetComponent<LightningBoltScript>().ManualMode)
+                    //if (wave == null)
                     //{
-                    //    //stop playing audio
-                    //    // lightningObject.GetComponent<Collider>().enabled = false;
-                    //    StartCoroutine(Deactivate());
+                    //    Debug.LogError("Wave object not found!");
+                    //    return;
                     //}
 
-                    //Debug.Log("Lightning Bolt horizental Triggered" + GestureIdToGestureName[gestureId]);
+                    //Debug.Log("Wave unparented");
 
-                    //break;
-                    //break;
+                    //// Activate the wave
+                    //wave.SetActive(true);
 
-                case 2:
-                    GameObject lightningObject2 = GameObject.Find("LightningObject");
-
-                    // Ensure it's active and ready
-                    lightningObject2.SetActive(true);
-                    lightningObject2.GetComponent<LightningBoltScript>().Trigger();
-                    lightningObject2.GetComponent<Collider>().enabled = true;
-                    lightningObject2.GetComponent<AudioSource>().PlayOneShot(LightningSound);
-                    // Adjust position to be in front of the player and move horizontally
-                    lightningObject2.transform.position = transform.position + transform.forward * 1.5f; // Adjust offset if needed
-                    lightningObject2.transform.rotation = Quaternion.LookRotation(transform.forward); // Make sure it faces forward
-
-                    // Play lightning sound
-
-                    // Move lightning forward horizontally (assuming Rigidbody is attached)
-                    lightningObject2.GetComponent<Rigidbody>().velocity = transform.forward * 10f; // Adjust speed
-
-                    if (lightningObject2.GetComponent<LightningBoltScript>().ManualMode)
-                    {
-                        //stop playing audio
-                        // lightningObject.GetComponent<Collider>().enabled = false;
-                        StartCoroutine(Deactivate());
-                    }
-
-                    Debug.Log("Lightning Bolt horizental Triggered" + GestureIdToGestureName[gestureId]);
-
-                    break;
-                    break;
-
-                case 3:
-                    //GameObject lightningObject2 = GameObject.Find("LightningObject");
-
-                    //// Ensure it's active and ready
-                    //lightningObject2.SetActive(true);
-                    //lightningObject2.GetComponent<LightningBoltScript>().Trigger();
-                    //lightningObject2.GetComponent<Collider>().enabled = true;
-                    //lightningObject2.GetComponent<AudioSource>().PlayOneShot(LightningSound);
-                    //// Adjust position to be in front of the player and move horizontally
-                    //lightningObject2.transform.position = transform.position + transform.forward * 1.5f; // Adjust offset if needed
-                    //lightningObject2.transform.rotation = Quaternion.LookRotation(transform.forward); // Make sure it faces forward
-
-                    //// Play lightning sound
-
-                    //// Move lightning forward horizontally (assuming Rigidbody is attached)
-                    //lightningObject2.GetComponent<Rigidbody>().velocity = transform.forward * 10f; // Adjust speed
-
-                    //if (lightningObject2.GetComponent<LightningBoltScript>().ManualMode)
+                    //// Enable its collider
+                    //Collider waveCollider = wave.GetComponent<Collider>();
+                    //if (waveCollider == null)
                     //{
-                    //    //stop playing audio
-                    //    // lightningObject.GetComponent<Collider>().enabled = false;
-                    //    StartCoroutine(Deactivate());
+                    //    Debug.LogError("Wave object does not have a Collider component!");
+                    //}
+                    //else
+                    //{
+                    //    waveCollider.enabled = true;
                     //}
 
-                    //Debug.Log("Lightning Bolt horizental Triggered" + GestureIdToGestureName[gestureId]);
+                    //// Apply velocity
+                    //Rigidbody waveRb = wave.GetComponent<Rigidbody>();
+                    //if (waveRb == null)
+                    //{
+                    //    Debug.LogError("Wave object does not have a Rigidbody component!");
+                    //}
+                    //else
+                    //{
+                    //    waveRb.velocity = transform.forward * 10f;
+                    //}
 
+                    //// Debug gesture info safely
+                    //if (GestureIdToGestureName.TryGetValue(gestureId, out string gestureName))
+                    //{
+                    //    Debug.Log("Wave going forward " + gestureName);
+                    //}
+                    //else
+                    //{
+                    //    Debug.LogWarning("Gesture ID not found in dictionary!");
+                    //}
+
+
+                    break;
+
+                case 2: // cylindre
+                    break;
+
+                case 3: // cube
+                    //GameObject wave = GameObject.Find("wave");
+                    //// active the wave object and send it forward towards the enemies and it grows as a wave size wize start from 0 0 0 and go up
+                    //wave.SetActive(true);
+                    //wave.GetComponent<AudioSource>().PlayOneShot(LightningSound);
+                    //wave.GetComponent<Collider>().enabled = true;
+                    //wave.GetComponent<Rigidbody>().velocity = transform.forward * 10f;
+                    //StartCoroutine(Deactivate());
+
+                    //for (int i = 0; i < 30; i++)
+                    //{
+                    //    wave.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+                    //    wave.transform.position += new Vector3(0, 0.1f, 0);
+                    //    // wait for 0.1s use a loop for this
+                    //    System.Threading.Thread.Sleep(10);
+                    //}
+
+
+                    //Debug.Log("wave going forward" + GestureIdToGestureName[gestureId]);
+                    //wave.SetActive(false);
                     //break;
 
-                case 4:
+                case 4: // star
                     // Two hands forward
                     //Events.spawn_lightning.Invoke();
                     // Afind lightning game object
@@ -231,7 +224,7 @@ namespace Gestures
                     Debug.Log("Lightning Bolt normal Triggered" + GestureIdToGestureName[gestureId]); // star
                     break;
 
-                case 5:
+                case 5: // pyramid
                     // heal - two hands up and forward, or cross
                     //Events.heal_event.Invoke();
                     GameObject Player = GameObject.Find("Player_XR Origin");
@@ -239,38 +232,108 @@ namespace Gestures
                     Debug.Log("Heal Triggered" + GestureIdToGestureName[gestureId]); // pyramid
                     break;
 
-                case 6:
-                    //GameObject lightningObject2 = GameObject.Find("LightningObject");
+                case 6: // infinity
+                    GameObject wave = GameObject.Find("wave");
 
-                    //// Ensure it's active and ready
-                    //lightningObject2.SetActive(true);
-                    //lightningObject2.GetComponent<LightningBoltScript>().Trigger();
-                    //lightningObject2.GetComponent<Collider>().enabled = true;
-                    //lightningObject2.GetComponent<AudioSource>().PlayOneShot(LightningSound);
-                    //// Adjust position to be in front of the player and move horizontally
-                    //lightningObject2.transform.position = transform.position + transform.forward * 1.5f; // Adjust offset if needed
-                    //lightningObject2.transform.rotation = Quaternion.LookRotation(transform.forward); // Make sure it faces forward
+                    if (wave == null)
+                    {
+                        Debug.LogError("Wave object not found!");
+                        return;
+                    }
 
-                    //// Play lightning sound
+                    Debug.Log("Wave unparented");
 
-                    //// Move lightning forward horizontally (assuming Rigidbody is attached)
-                    //lightningObject2.GetComponent<Rigidbody>().velocity = transform.forward * 10f; // Adjust speed
+                    // Activate the wave
+                    wave.SetActive(true);
 
-                    //if (lightningObject2.GetComponent<LightningBoltScript>().ManualMode)
-                    //{
-                    //    //stop playing audio
-                    //    // lightningObject.GetComponent<Collider>().enabled = false;
-                    //    StartCoroutine(Deactivate());
-                    //}
+                    // Enable its collider
+                    Collider waveCollider = wave.GetComponent<Collider>();
+                    if (waveCollider == null)
+                    {
+                        Debug.LogError("Wave object does not have a Collider component!");
+                    }
+                    else
+                    {
+                        waveCollider.enabled = true;
+                        wave.GetComponent<BoxCollider>().enabled = true;
+                        // make it a trigger
+                        waveCollider.isTrigger = true;
+                    }
 
-                    //Debug.Log("Lightning Bolt horizental Triggered" + GestureIdToGestureName[gestureId]);
+                    // Apply velocity
+                    Rigidbody waveRb = wave.GetComponent<Rigidbody>();
 
-                    //break;
+                    GameObject HMD = GameObject.Find("Main Camera");
+                    if (waveRb == null)
+                    {
+                        Debug.LogError("Wave object does not have a Rigidbody component!");
+                    }
+                    else
+                    {
+                        //waveRb.velocity = transform.forward * 20f;
 
+                        // send the wave from its current roation to the forward direction of the HMD
+                        waveRb.velocity = HMD.transform.forward * 20f;
+
+                        // make the wave a trigger
+                        waveCollider.isTrigger = true;
+                    }
+
+                    // Debug gesture info safely
+                    if (GestureIdToGestureName.TryGetValue(gestureId, out string gestureName))
+                    {
+                        Debug.Log("Wave going forward " + gestureName);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Gesture ID not found in dictionary!");
+                    }
+
+                    // fix the toration of the wave to be where the HMD is pointing after getting the HMD gameobject
+                    wave.transform.rotation = HMD.transform.rotation;
+
+                    // Destroy the wave after it has moved 30 meters forward
+                    wave.GetComponent<MonoBehaviour>().Invoke("DestroyWave", 6f);
+
+                    break;
                 default:
                     throw new System.Exception("Call Gesture Action went wrong. Possible missclasification");
             }
         }
+
+        private IEnumerator GrowMoveAndResetWave(GameObject wave, Transform originalParent)
+        {
+            Vector3 initialScale = Vector3.zero;
+            Vector3 targetScale = new Vector3(30f, 30f, 30f); // Wave grows up to 30 meters
+            Vector3 moveDirection = Vector3.forward; // Moves forward in world space
+
+            float duration = 2.0f; // Time in seconds for full wave effect
+            float elapsedTime = 0f;
+
+            while (elapsedTime < duration)
+            {
+                float t = elapsedTime / duration;
+                wave.transform.localScale = Vector3.Lerp(initialScale, targetScale, t);
+                wave.transform.position += moveDirection * Time.deltaTime * 15f;
+
+                elapsedTime += Time.deltaTime;
+            }
+
+            Debug.Log("Wave reached max size and distance");
+
+            // Wait briefly before resetting
+            yield return new WaitForSeconds(0.5f);
+
+            // Deactivate the wave
+            wave.SetActive(false);
+
+            // Reset wave scale and position
+            wave.transform.localScale = initialScale;
+            wave.transform.position = new Vector3(0, 0, 0);
+
+            Debug.Log("Wave reset and reparented");
+        }
+
 
         private IEnumerator Deactivate()
         {
