@@ -74,7 +74,11 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
+<<<<<<< HEAD
     globalScale: 1
+=======
+    globalScale: 0.1
+>>>>>>> 0fa3981f5e21b57157a245ab2977aa9c926b6a08
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -106,7 +110,11 @@ ModelImporter:
     secondaryUVMinLightmapResolution: 40
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
+<<<<<<< HEAD
     useFileScale: 1
+=======
+    useFileScale: 0
+>>>>>>> 0fa3981f5e21b57157a245ab2977aa9c926b6a08
     strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
@@ -129,7 +137,11 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+<<<<<<< HEAD
     globalScale: 0.01
+=======
+    globalScale: 0.1
+>>>>>>> 0fa3981f5e21b57157a245ab2977aa9c926b6a08
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
