@@ -7,6 +7,7 @@ using TMPro;
 using UnityEngine;
 using DigitalRuby.LightningBolt;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 
 namespace Gestures
 {
@@ -109,6 +110,28 @@ namespace Gestures
             }
         }
         Transform originalParent;
+        GameObject portal;
+        IEnumerator DisappearAfterTime(float seconds)
+        {
+            yield return new WaitForSeconds(seconds);
+            if (portal != null)
+            {
+                portal.SetActive(false); // Makes the portal disappear
+
+                // get a set active false game object called darth2 and set it active once the portal disappears
+
+                // find handler2 and activate all its children
+                GameObject handler2 = GameObject.Find("handler2");
+                handler2.SetActive(true);
+                foreach (Transform child in handler2.transform)
+                {
+                    child.gameObject.SetActive(true);
+                }
+                GameObject darth2 = GameObject.Find("Darth2");
+                darth2.SetActive(true);
+                
+            }
+        }
         private void CallGestureAction(int gestureId)
         {
 
@@ -124,20 +147,74 @@ namespace Gestures
             switch (gestureId)
             {
                 case 1: // sphere
+                        // find gameobject called handler anmd activate all its children
 
+                    //GameObject LightSaber2 = GameObject.Find("LightSaber2");
+                    //GameObject LeftHand = GameObject.Find("LeftHand Controller");
+                    //LightSaber2.transform.SetParent(LeftHand.transform);
+                    //LightSaber2.transform.localPosition = new Vector3(0, 0, 0);
+                    //LightSaber2.transform.localRotation = Quaternion.Euler(0, 0, 0);
 
+                    GameObject handler = GameObject.Find("handler");
+                    handler.SetActive(true);
+
+                    // make all achildren active
+                    foreach (Transform child in handler.transform)
+                    {
+                        child.gameObject.SetActive(true);
+                    }
+                    portal = GameObject.Find("Portal");
+                    portal.SetActive(true);
+
+                    // get the camera offset transform and palace the portal in front of it z axis wise by 10m
+                    GameObject CameraOffset = GameObject.Find("Main Camera");
+                    portal.transform.position = CameraOffset.transform.position + CameraOffset.transform.forward * 10;
+                    //portal.transform.position = new Vector3(0, 0.007044974f, 0);
+                    if (portal != null)
+                    {
+
+                        Debug.Log("Portal GameObject is assigned!");
+                        // Set the transform values
+                        // check if active
+                        //if (portal.activeSelf)
+                        //{
+                        //    Debug.Log("Portal is active");
+                        //    portal.transform.position = new Vector3(0, 0.478f, 0);
+                        //    portal.transform.eulerAngles = new Vector3(0, 180, 0);
+                        //    portal.transform.localScale = new Vector3(100, 100, 100);
+                        //}
+                        //else
+                        //{
+                        //    Debug.Log("Portal is not active");
+                        //}
+                        // Start the coroutine to make it disappear after 5 seconds
+                        StartCoroutine(DisappearAfterTime(5f));
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Portal GameObject is not assigned!");
+                    }
                     break;
+                 
 
                 case 2: // cylindre
                     break;
 
                 case 3: // cube
-                    // FIND A GAMEOBJKECT CALLED LightSaber2 AND MAKE IT A SHILD OF THE LEFT HAND
+                        // FIND A GAMEOBJKECT CALLED LightSaber2 AND MAKE IT A SHILD OF THE LEFT HAND
+                        // get the gameobject handlerObi and then activate all the children
+
                     GameObject LightSaber2 = GameObject.Find("LightSaber2");
                     GameObject LeftHand = GameObject.Find("LeftHand Controller");
                     LightSaber2.transform.SetParent(LeftHand.transform);
                     LightSaber2.transform.localPosition = new Vector3(0, 0, 0);
                     LightSaber2.transform.localRotation = Quaternion.Euler(0, 0, 0);
+
+                    GameObject LightSaber = GameObject.Find("handleObi");
+                    foreach (Transform child in LightSaber.transform)
+                    {
+                        child.gameObject.SetActive(true);
+                    }
                     break;  
 
                 case 4: // star
